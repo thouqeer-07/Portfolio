@@ -110,9 +110,6 @@ const Contact = () => {
                     transition={{ duration: 0.6 }}
                     className="space-y-6"
                     onSubmit={handleSubmit}
-                    name="contact"
-                    method="POST"
-                    data-netlify="true"
                 >
                     <input type="hidden" name="form-name" value="contact" />
                     <div>
