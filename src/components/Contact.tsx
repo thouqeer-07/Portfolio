@@ -1,7 +1,50 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, Loader2 } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setError('');
+
+        try {
+            const response = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    'form-name': 'contact',
+                    ...formData
+                }).toString()
+            });
+
+            if (response.ok) {
+                setIsSubmitted(true);
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (err) {
+            setError('Something went wrong. Please try again later.');
+            console.error(err);
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <section id="contact">
             <motion.h2
@@ -66,30 +109,67 @@ const Contact = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
                     className="space-y-6"
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleSubmit}
+                    name="contact"
+                    method="POST"
+                    data-netlify="true"
                 >
+                    <input type="hidden" name="form-name" value="contact" />
                     <div>
-                        <label className="block text-sm font-medium text-[var(--color-secondary)] mb-2">Name</label>
-                        <input type="text" className="w-full bg-[var(--color-background)]/50 border border-[var(--color-border)] rounded-lg px-4 py-3 text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)] transition-colors" placeholder="Your Name" />
+                        <label htmlFor="name" className="block text-sm font-medium text-[var(--color-secondary)] mb-2">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-[var(--color-background)]/50 border border-[var(--color-border)] rounded-lg px-4 py-3 text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)] transition-colors"
+                            placeholder="Your Name"
+                        />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-[var(--color-secondary)] mb-2">Email</label>
-                        <input type="email" className="w-full bg-[var(--color-background)]/50 border border-[var(--color-border)] rounded-lg px-4 py-3 text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)] transition-colors" placeholder="your@email.com" />
+                        <label htmlFor="email" className="block text-sm font-medium text-[var(--color-secondary)] mb-2">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full bg-[var(--color-background)]/50 border border-[var(--color-border)] rounded-lg px-4 py-3 text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)] transition-colors"
+                            placeholder="your@email.com"
+                        />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-[var(--color-secondary)] mb-2">Message</label>
-                        <textarea rows={4} className="w-full bg-[var(--color-background)]/50 border border-[var(--color-border)] rounded-lg px-4 py-3 text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)] transition-colors" placeholder="Your message..."></textarea>
+                        <label htmlFor="message" className="block text-sm font-medium text-[var(--color-secondary)] mb-2">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            required
+                            rows={4}
+                            className="w-full bg-[var(--color-background)]/50 border border-[var(--color-border)] rounded-lg px-4 py-3 text-[var(--color-text)] focus:outline-none focus:border-[var(--color-primary)] transition-colors"
+                            placeholder="Your message..."
+                        />
                     </div>
+                    {error && <p className="text-red-500 text-sm">{error}</p>}
+                    {isSubmitted && <p className="text-green-500 text-sm">Message sent successfully!</p>}
+
                     <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-full bg-[var(--color-primary)] text-[var(--color-background)] font-bold py-3 rounded-lg hover:opacity-90 hover:shadow-[0_0_20px_var(--color-primary)]/30 transition-all flex items-center justify-center gap-2"
+                        disabled={isSubmitting}
+                        className="w-full bg-[var(--color-primary)] text-[var(--color-background)] font-bold py-3 rounded-lg hover:opacity-90 hover:shadow-[0_0_20px_var(--color-primary)]/30 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Send Message <Send size={18} />
+                        {isSubmitting ? (
+                            <>Sending... <Loader2 className="animate-spin" size={18} /></>
+                        ) : (
+                            <>Send Message <Send size={18} /></>
+                        )}
                     </motion.button>
-                    <p className="text-xs text-center text-slate-500 mt-4">
-                        (Note: Form functionality requires backend integration or Netlify Forms)
-                    </p>
+
                 </motion.form>
             </div>
         </section>
