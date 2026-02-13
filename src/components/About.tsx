@@ -20,10 +20,10 @@ const About = () => {
                 className="max-w-4xl mx-auto bg-[var(--color-background)]/50 backdrop-blur-md p-8 rounded-2xl border border-[var(--color-border)] shadow-xl hover:border-[var(--color-primary)] transition-colors duration-300 hover:shadow-2xl hover:shadow-[var(--color-primary)]/10"
             >
                 <p className="text-lg text-[var(--color-secondary)] leading-relaxed mb-6">
-                    I’m an <span className="text-[var(--color-primary)] font-semibold">Artificial Intelligence & Data Science</span> undergraduate driven by curiosity and creativity, with a strong passion for building intelligent systems that solve real-world problems.
+                    I’m an <span className="text-[var(--color-primary)] font-semibold">Artificial Intelligence & Data Science</span> undergraduate and a passionate <span className="text-[var(--color-primary)] font-semibold">Full Stack Web Developer</span>. I am driven by curiosity and creativity, with a strong passion for building intelligent systems and dynamic web applications that solve real-world problems.
                 </p>
                 <p className="text-lg text-[var(--color-secondary)] leading-relaxed mb-6">
-                    I enjoy working at the intersection of data, algorithms, and software, transforming ideas into impactful AI-powered applications. From predictive models and deep learning systems to full-stack AI solutions, I focus on creating work that is both technically strong and practically useful.
+                    I enjoy working at the intersection of data, algorithms, and modern web technologies, transforming ideas into impactful AI-powered applications. From predictive models and deep learning systems to responsive full-stack web solutions, I focus on creating work that is both technically strong and user-centric.
                 </p>
                 <p className="text-lg text-[var(--color-secondary)] leading-relaxed">
                     I believe in continuous learning, experimentation, and growth. My goal is to evolve as an AI engineer while contributing to projects that create meaningful change through technology.
