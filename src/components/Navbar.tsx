@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -17,12 +17,15 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState('hero');
+    const isManualScroll = useRef(false);
 
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
 
             // Active section logic
+            if (isManualScroll.current) return;
+
             const currentPosition = window.scrollY + 120; // Improved offset for header assignment
 
             for (const item of navItems) {
@@ -42,12 +45,20 @@ const Navbar = () => {
 
     const scrollToSection = (href: string) => {
         setIsOpen(false);
+        const sectionId = href.substring(1);
+        setActiveSection(sectionId);
+        isManualScroll.current = true;
+
         const element = document.querySelector(href);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         } else if (href === '#hero') {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        setTimeout(() => {
+            isManualScroll.current = false;
+        }, 1000);
     };
 
     return (

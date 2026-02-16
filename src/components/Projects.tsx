@@ -6,7 +6,7 @@ const projects = [
         title: "PDF BOT Using RAG",
         description: "An intelligent document retrieval system using Retrieval-Augmented Generation (RAG). It allows users to query PDF documents and get accurate, context-aware answers.",
         tech: ["Python", "LangChain", "Qdrant", "MongoDB Atlas", "Gemini", "Streamlit"],
-        link: "https://pdfbot--rag.streamlit.app/", // Placeholder as per request
+        link: "https://pdfbot--rag-test.streamlit.app/", // Placeholder as per request
         github: "https://github.com/thouqeer-07/PDF.BOT--RAG"
     },
     {
