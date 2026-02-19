@@ -3,11 +3,6 @@ import { ExternalLink } from 'lucide-react';
 
 const certifications = [
     {
-        title: "Oracle Database SQL Certified Specialist",
-        institute: "Oracle",
-        link: "https://www.oracle.com/education/certification/" // Placeholder link
-    },
-    {
         title: "Ethical Hacking",
         institute: "NPTEL",
         link: "https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/106/noc25-cs142/Course/NPTEL25CS142S105401012110923334.pdf"
@@ -32,11 +27,7 @@ const certifications = [
         institute: "Udemy",
         link: "https://www.udemy.com/certificate/UC-9c5da8cb-7dc6-4368-9f12-9e4238eb9a5e/" // Placeholder link
     },
-    {
-        title: "Fundamentals of Gen AI",
-        institute: "Google Cloud",
-        link: "https://www.cloudskillsboost.google/course_templates/539" // Specific link for Gen AI
-    }
+
 ];
 
 const containerVariants: Variants = {

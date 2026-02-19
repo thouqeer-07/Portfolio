@@ -15,6 +15,13 @@ const projects = [
         tech: ["Python", "Apache Superset", "Gemini", "Supabase", "Streamlit", "Docker"],
         link: "https://bi-bot.streamlit.app/", // Placeholder as per request
         github: "https://github.com/thouqeer-07/POWERBI_BOT"
+    },
+    {
+        title: "Trapezoidal AI",
+        description: "A high-precision numerical integration platform that combines adaptive calculus algorithms with Gemini AI for detailed mathematical synthesis and visualizations.",
+        tech: ["React", "TypeScript", "Tailwind CSS", "Math.js", "Gemini AI", "Netlify"],
+        link: "https://trapazoidalai.netlify.app/", // User will add
+        github: "https://github.com/thouqeer-07/Trapazoidal_AI" // User will add
     }
 ];
 
@@ -54,24 +61,51 @@ const Projects = () => {
 
                             <div className="flex gap-4">
                                 <motion.a
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{
+                                        scale: 1.1,
+                                        y: -5,
+                                        boxShadow: "0 10px 20px -10px var(--color-secondary)"
+                                    }}
+                                    whileTap={{ scale: 0.9 }}
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-secondary)] text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
+                                    className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-[var(--color-secondary)]/50 text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300 group/btn"
                                 >
-                                    <Github size={18} /> Code
+                                    <motion.div
+                                        variants={{
+                                            hover: { rotate: 12, scale: 1.2 }
+                                        }}
+                                        initial="initial"
+                                        whileHover="hover"
+                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                    >
+                                        <Github size={18} />
+                                    </motion.div>
+                                    <span className="font-medium">Code</span>
                                 </motion.a>
                                 <motion.a
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{
+                                        scale: 1.1,
+                                        y: -5,
+                                        boxShadow: "0 10px 25px -5px var(--color-primary)"
+                                    }}
+                                    whileTap={{ scale: 0.9 }}
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary)] text-[var(--color-background)] font-medium hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-[var(--color-primary)]/30"
+                                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-[var(--color-background)] font-bold hover:opacity-90 transition-all duration-300 shadow-xl group/demo"
                                 >
-                                    <ExternalLink size={18} /> Live Demo
+                                    <motion.div
+                                        variants={{
+                                            hover: { x: 3, y: -3, scale: 1.1 }
+                                        }}
+                                        whileHover="hover"
+                                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                                    >
+                                        <ExternalLink size={18} />
+                                    </motion.div>
+                                    <span>Live Demo</span>
                                 </motion.a>
                             </div>
                         </div>

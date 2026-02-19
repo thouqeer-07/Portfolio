@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const skills = [
-    { category: "Languages", items: ["Python", "C/C++", "SQL"] },
-    { category: "Data & ML", items: ["Machine Learning", "Power BI", "Microsoft Excel", "Weka", "R Studio", "Google AI Studio"] },
-    { category: "Core Concepts", items: ["Data Structures", "Operating Systems", "Computer Networks"] },
-    { category: "Tools & Others", items: ["Git/GitHub", "VS Code", "CISCO Packet Tracer"] }
+    { category: "Languages & Backend", items: ["Python", "C/C++", "SQL", "FastAPI"] },
+    { category: "GenAI & AI Architecture", items: ["LangChain", "RAG", "Qdrant", "Hugging Face", "Embeddings", "Machine Learning"] },
+    { category: "Data & Visualization", items: ["Power BI", "Microsoft Excel", "Google AI Studio", "Weka", "R Studio"] },
+    { category: "Developer Tools & Core", items: ["Docker", "Git/GitHub", "VS Code", "Data Structures", "OS/Networking"] }
 ];
 
 const Skills = () => {
