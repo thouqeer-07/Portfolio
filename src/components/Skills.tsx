@@ -19,7 +19,7 @@ const cardVariants: Variants = {
         x: 0,
         filter: 'blur(0px)',
         transition: {
-            delay: i * 0.1,
+            delay: i * 0.05,
             duration: 0.6,
             ease: "easeOut"
         }

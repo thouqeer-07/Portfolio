@@ -45,7 +45,7 @@ const Projects = () => {
                         whileInView={{
                             opacity: 1,
                             y: 0,
-                            transition: { duration: 0.5, delay: index * 0.2 }
+                            transition: { duration: 0.5, delay: index * 0.08 }
                         }}
                         viewport={{ once: false, margin: "-50px" }}
                         whileHover={{ y: -10 }}
