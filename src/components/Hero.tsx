@@ -1,7 +1,18 @@
 import { motion, type Variants } from 'framer-motion';
 import { Github, Linkedin, Mail, Code2, FileText } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const Hero = () => {
+    const roles = ["AI Engineer", "Data Scientist", "Full Stack Developer"];
+    const [roleIndex, setRoleIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 3500);
+        return () => clearInterval(timer);
+    }, []);
+
     // Animation Variants
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -70,7 +81,32 @@ const Hero = () => {
                 >
                     <span>AI & Data Science Student</span>
                     <span className="hidden md:block w-1.5 h-1.5 rounded-full bg-[var(--color-primary)]" />
-                    <span className="text-[var(--color-primary)]">Aspiring AI Engineer</span>
+                    <span className="text-[var(--color-primary)] flex items-center min-w-[200px] justify-center md:justify-start">
+                        <span key={roleIndex} className="flex">
+                            {roles[roleIndex].split("").map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    initial={{ opacity: 0, display: "none" }}
+                                    animate={{ opacity: 1, display: "inline-block" }}
+                                    transition={{
+                                        delay: index * 0.05,
+                                        duration: 0.01
+                                    }}
+                                >
+                                    {char === " " ? "\u00A0" : char}
+                                </motion.span>
+                            ))}
+                        </span>
+                        <motion.span
+                            animate={{ opacity: [1, 0] }}
+                            transition={{
+                                duration: 0.8,
+                                repeat: Infinity,
+                                ease: "linear"
+                            }}
+                            className="w-[2px] h-[1em] bg-[var(--color-primary)] ml-1 inline-block"
+                        />
+                    </span>
                 </motion.h2>
 
                 <motion.p
@@ -90,7 +126,7 @@ const Hero = () => {
                         { name: "GitHub", icon: Github, href: "https://github.com/thouqeer-07", color: "hover:text-[var(--color-primary)]" },
                         { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/syed-thouqeer-ahmed-a-8359b9301", color: "hover:text-[#0077b5]" },
                         { name: "LeetCode", icon: Code2, href: "https://leetcode.com/u/Syed_Thouqeer_Ahmed/", color: "hover:text-[#ffa116]" },
-                        { name: "Resume", icon: FileText, href: "certificates/Resume.pdf", color: "hover:text-[Green]", download: true },
+                        { name: "Resume", icon: FileText, href: "certificates/RESUME.pdf", color: "hover:text-[Green]", download: true },
                         { name: "Email", icon: Mail, href: "mailto:thouqeerahmed07@gmail.com", color: "hover:text-[#ea4335]" }
                     ].map((item, index) => (
                         <motion.a

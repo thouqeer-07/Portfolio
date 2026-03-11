@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 
 const skills = [
-    { category: "Languages & Backend", items: ["Python", "C/C++", "SQL", "FastAPI"] },
-    { category: "GenAI & AI Architecture", items: ["LangChain", "RAG", "Qdrant", "Hugging Face", "Embeddings", "Machine Learning"] },
-    { category: "Data & Visualization", items: ["Power BI", "Microsoft Excel", "Google AI Studio", "Weka", "R Studio"] },
-    { category: "Developer Tools & Core", items: ["Docker", "Git/GitHub", "VS Code", "Data Structures", "OS/Networking"] }
+    { category: "Languages & Frameworks", items: ["Python", "C / C++", "Java", "JavaScript", "React", "React Native"] },
+    { category: "Backend & Database", items: ["REST API", "Flask", "SQL", "MongoDB", "Supabase"] },
+    { category: "AI & Machine Learning", items: ["ML Fundamentals", "RAG", "AI Tools & LLM APIs (Google AI Studio)", "Prompt Engineering", "Model Deployment", "Hugging Face"] },
+    { category: "Data & DevTools", items: ["Power BI", "Microsoft Excel", "Git/GitHub", "VS Code", "Postman", "Docker", "WEKA", "R Studio"] },
+    { category: "Core CS & Networking", items: ["Data Structures", "Operating Systems", "Computer Networks", "CISCO Packet Tracer"] }
 ];
 
 const Skills = () => {
@@ -26,7 +27,8 @@ const Skills = () => {
                             key={index}
                             initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: index * 0.05, duration: 0.5 }}
+                            viewport={{ once: true }}
                             className="bg-[var(--color-background)]/50 backdrop-blur-md rounded-2xl p-6 md:p-8 hover:bg-[var(--color-background)]/80 transition-colors border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 group"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-6 flex items-center gap-3">
