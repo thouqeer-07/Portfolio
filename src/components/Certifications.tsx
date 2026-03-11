@@ -30,24 +30,24 @@ const certifications = [
 
 ];
 
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.1
-        }
-    }
-};
+
 
 const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+    hidden: (i: number) => ({
+        opacity: 0,
+        x: i % 2 === 0 ? -100 : 100,
+        filter: 'blur(10px)'
+    }),
+    visible: (i: number) => ({
         opacity: 1,
-        y: 0,
-        transition: { duration: 0.4, ease: "easeOut" }
-    },
+        x: 0,
+        filter: 'blur(0px)',
+        transition: {
+            delay: i * 0.1,
+            duration: 0.6,
+            ease: "easeOut"
+        }
+    }),
     hover: {
         y: -10,
         transition: { duration: 0.3, ease: "easeOut" }
@@ -56,29 +56,28 @@ const cardVariants: Variants = {
 
 const Certifications = () => {
     return (
-        <section id="certifications">
+        <section id="certifications" className="py-20">
             <div className="max-w-4xl mx-auto px-4">
                 <motion.h2
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: false, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                     className="text-3xl md:text-5xl font-bold mb-16 text-center bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]"
                 >
                     Certifications
                 </motion.h2>
 
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-                >
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {certifications.map((cert, index) => (
                         <motion.div
                             key={index}
+                            custom={index}
                             variants={cardVariants}
+                            initial="hidden"
+                            whileInView="visible"
                             whileHover="hover"
+                            viewport={{ once: false, margin: "-50px" }}
                             className="relative group p-8 bg-[var(--color-background)]/40 backdrop-blur-sm rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-colors duration-300 flex flex-col justify-between hover:shadow-[0_10px_30px_-10px_var(--color-primary)]/10"
                         >
                             {/* Card Link Overlay */}
@@ -105,7 +104,7 @@ const Certifications = () => {
                             </div>
                         </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

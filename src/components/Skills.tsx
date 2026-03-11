@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 
 const skills = [
     { category: "Languages & Frameworks", items: ["Python", "C / C++", "Java", "JavaScript", "React", "React Native"] },
@@ -8,9 +8,31 @@ const skills = [
     { category: "Core CS & Networking", items: ["Data Structures", "Operating Systems", "Computer Networks", "CISCO Packet Tracer"] }
 ];
 
+const cardVariants: Variants = {
+    hidden: (i: number) => ({
+        opacity: 0,
+        x: i % 2 === 0 ? -100 : 100,
+        filter: 'blur(10px)'
+    }),
+    visible: (i: number) => ({
+        opacity: 1,
+        x: 0,
+        filter: 'blur(0px)',
+        transition: {
+            delay: i * 0.1,
+            duration: 0.6,
+            ease: "easeOut"
+        }
+    }),
+    hover: {
+        y: -10,
+        transition: { duration: 0.3, ease: "easeOut" }
+    }
+};
+
 const Skills = () => {
     return (
-        <section id="skills">
+        <section id="skills" className="py-20">
             <div className="max-w-6xl mx-auto px-4">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
@@ -25,10 +47,12 @@ const Skills = () => {
                     {skills.map((group, index) => (
                         <motion.div
                             key={index}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05, duration: 0.5 }}
-                            viewport={{ once: true }}
+                            custom={index}
+                            variants={cardVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            whileHover="hover"
+                            viewport={{ margin: "-50px" }}
                             className="bg-[var(--color-background)]/50 backdrop-blur-md rounded-2xl p-6 md:p-8 hover:bg-[var(--color-background)]/80 transition-colors border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 group"
                         >
                             <h3 className="text-xl md:text-2xl font-bold text-[var(--color-text)] mb-6 flex items-center gap-3">

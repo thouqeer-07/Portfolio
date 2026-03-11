@@ -42,8 +42,12 @@ const Projects = () => {
                     <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.2 }}
+                        whileInView={{
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.5, delay: index * 0.2 }
+                        }}
+                        viewport={{ once: false, margin: "-50px" }}
                         whileHover={{ y: -10 }}
                         className="bg-[var(--color-background)]/50 backdrop-blur-md rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl group hover:border-[var(--color-primary)] transition-colors duration-300"
                     >
