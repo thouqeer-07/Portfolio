@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
+
     {
         title: "PDF BOT Using RAG",
         description: "An intelligent document retrieval system using Retrieval-Augmented Generation (RAG). It allows users to query PDF documents and get accurate, context-aware answers.",
@@ -15,6 +16,13 @@ const projects = [
         tech: ["Python", "Apache Superset", "Gemini", "Supabase", "Streamlit", "Docker"],
         link: "https://bi-bot.streamlit.app/", // Placeholder as per request
         github: "https://github.com/thouqeer-07/POWERBI_BOT"
+    },
+    {
+        title: "LawGenie — AI Legal Assistant",
+        description: "An AI-powered legal assistant designed to help users navigate Indian legal systems effortlessly. It identifies relevant laws, explains them simply, and suggests actionable next steps based on real-life scenarios.",
+        tech: ["React", "Vite", "Node.js", "Express.js", "Gemini AI", "CSS3", "Netlify"],
+        link: "https://lawgenie.netlify.app/",
+        github: "https://github.com/thouqeer-07/LawGenie"
     },
     {
         title: "Trapezoidal AI",
