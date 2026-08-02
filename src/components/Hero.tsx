@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-import { Github, Linkedin, Mail, Code2, FileText } from 'lucide-react';
+import { Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
