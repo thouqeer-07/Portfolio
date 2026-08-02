@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Code2, FileText } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
-    const roles = ["AI Engineer", "Data Scientist", "Full Stack Developer"];
+    const roles = ["AI Engineer", "Data Scientist", "Software Engineer"];
     const [roleIndex, setRoleIndex] = useState(0);
 
     useEffect(() => {
@@ -126,7 +126,7 @@ const Hero = () => {
                         { name: "GitHub", icon: Github, href: "https://github.com/thouqeer-07", color: "hover:text-[var(--color-primary)]" },
                         { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/syed-thouqeer-ahmed-a-8359b9301", color: "hover:text-[#0077b5]" },
                         { name: "LeetCode", icon: Code2, href: "https://leetcode.com/u/Syed_Thouqeer_Ahmed/", color: "hover:text-[#ffa116]" },
-                        { name: "Resume", icon: FileText, href: "certificates/RESUME.pdf", color: "hover:text-[Green]", download: true },
+                       // { name: "Resume", icon: FileText, href: "certificates/RESUME.pdf", color: "hover:text-[Green]", download: true },
                         { name: "Email", icon: Mail, href: "mailto:thouqeerahmed07@gmail.com", color: "hover:text-[#ea4335]" }
                     ].map((item, index) => (
                         <motion.a
