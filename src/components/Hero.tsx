@@ -126,7 +126,6 @@ const Hero = () => {
                         { name: "GitHub", icon: Github, href: "https://github.com/thouqeer-07", color: "hover:text-[var(--color-primary)]" },
                         { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/syed-thouqeer-ahmed-a-8359b9301", color: "hover:text-[#0077b5]" },
                         { name: "LeetCode", icon: Code2, href: "https://leetcode.com/u/Syed_Thouqeer_Ahmed/", color: "hover:text-[#ffa116]" },
-                       // { name: "Resume", icon: FileText, href: "certificates/RESUME.pdf", color: "hover:text-[Green]", download: true },
                         { name: "Email", icon: Mail, href: "mailto:thouqeerahmed07@gmail.com", color: "hover:text-[#ea4335]" }
                     ].map((item, index) => (
                         <motion.a
@@ -134,16 +133,15 @@ const Hero = () => {
                             href={item.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            download={item.download}
                             variants={socialVariants}
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             whileTap={{ scale: 0.9 }}
-                            className={`group relative p-4 bg-[var(--color-background)]/50 backdrop-blur-sm border border-[var(--color-border)] rounded-2xl text-[var(--color-secondary)] transition-colors duration-300 ${item.color} shadow-lg hover:shadow-[var(--color-primary)]/10`}
+                            className={`group relative p-4 bg-[var(--color-background)]/50 backdrop-blur-sm border border-[var(--color-border)] rounded-2xl text-[var(--color-secondary)] transition-colors duration-200 ease-in-out hover:shadow-md ${item.color}`}
                         >
                             <item.icon size={28} />
 
                             {/* Tooltip */}
-                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-[var(--color-primary)] text-[var(--color-background)] text-xs font-bold rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-xl">
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 bg-[var(--color-primary)] text-[var(--color-background)] text-xs font-bold rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                                 {item.name}
                                 {/* Tooltip Arrow */}
                                 <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-[var(--color-primary)]" />
