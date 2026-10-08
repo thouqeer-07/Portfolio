@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Code2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
-    const roles = ["AI Engineer", "Data Scientist", "Software Engineer"];
+    const roles = ["AI Engineer"];
     const [roleIndex, setRoleIndex] = useState(0);
 
     useEffect(() => {
